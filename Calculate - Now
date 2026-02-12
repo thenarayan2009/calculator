@@ -1,0 +1,231 @@
+<script type="text/javascript">
+
+	atOptions = {
+
+		'key' : 'd34b0edc49ceb746a00b5b64fc23b7f3',
+
+		'format' : 'iframe',
+
+		'height' : 90,
+
+		'width' : 728,
+
+		'params' : {}
+
+	};
+
+</script>
+
+<script type="text/javascript" src="//www.highperformanceformat.com/d34b0edc49ceb746a00b5b64fc23b7f3/invoke.js"></script>
+
+
+
+<!DOCTYPE html>
+
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>गाँव का लोन कैलकुलेटर</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f4f4f;
+
+            text-align: center;
+
+            padding: 20px;
+
+        }
+
+        .container {
+
+            max-width: 400px;
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+            margin: auto;
+
+        }
+
+        h2 {
+
+            color: #2c3e50;
+
+        }
+
+        label {
+
+            display: block;
+
+            text-align: left;
+
+            margin-top: 10px;
+
+            font-weight: bold;
+
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 8px;
+
+            margin: 5px 0;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            font-size: 16px;
+
+        }
+
+        button {
+
+            width: 100%;
+
+            background-color: #3498db;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px;
+
+            margin-top: 10px;
+
+            border-radius: 5px;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+        }
+
+        button:hover {
+
+            background-color: #2980b9;
+
+        }
+
+        #result {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #27ae60;
+
+            margin-top: 15px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>गाँव का लोन कैलकुलेटर</h2>
+
+        <label>लोन राशि (₹):</label>
+
+        <input type="number" id="loanAmount" placeholder="लोन राशि दर्ज करें">
+
+        
+
+        <label>मासिक ब्याज दर (%):</label>
+
+        <input type="number" id="interestRate" placeholder="मासिक ब्याज दर दर्ज करें">
+
+        
+
+        <label>समय अवधि (महीनों में):</label>
+
+        <input type="number" id="loanTerm" placeholder="समय अवधि (महीनों में)">
+
+        
+
+        <button onclick="calculateLoan()">गणना करें</button>
+
+        
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function calculateLoan() {
+
+            let loanAmount = document.getElementById("loanAmount").value;
+
+            let interestRate = document.getElementById("interestRate").value;
+
+            let loanTerm = document.getElementById("loanTerm").value;
+
+            if (loanAmount == "" || interestRate == "" || loanTerm == "") {
+
+                alert("कृपया सभी फ़ील्ड्स भरें!");
+
+                return;
+
+            }
+
+            let P = parseFloat(loanAmount); // लोन राशि
+
+            let R = parseFloat(interestRate) * 12; // वार्षिक ब्याज दर
+
+            let T = parseFloat(loanTerm) / 12; // समय (साल में)
+
+            let totalInterest = (P * R * T) / 100; // कुल ब्याज
+
+            let monthlyInterest = totalInterest / (T * 12); // मासिक ब्याज
+
+            let totalPayment = P + totalInterest; // कुल भुगतान
+
+            // Indian comma format function
+
+            function formatNumber(num) {
+
+                return num.toLocaleString("en-IN");
+
+            }
+
+            document.getElementById("result").innerHTML = `
+
+                <p>लोन राशि: ₹ ${formatNumber(P)}</p>
+
+                <p>मासिक ब्याज: ₹ ${formatNumber(monthlyInterest)}</p>
+
+                <p>कुल ब्याज: ₹ ${formatNumber(totalInterest)}</p>
+
+                <p>कुल भुगतान (लोन + ब्याज): ₹ ${formatNumber(totalPayment)}</p>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
