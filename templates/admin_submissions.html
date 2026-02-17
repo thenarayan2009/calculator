@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Screenshot Verification</h2>
+<table><tr><th>User</th><th>Task</th><th>Proof</th><th>Status</th><th>Action</th></tr>
+{% for r in rows %}<tr>
+<td>{{ r.user_name }} ({{ r.contact }})</td><td>{{ r.task_name }}</td><td><a href="{{ url_for('uploads', filename=r.screenshot_path) }}" target="_blank">View</a></td><td>{{ r.status }}</td>
+<td>
+{% if r.status == 'Pending' %}
+<form method="post" class="inline"><input type="hidden" name="submission_id" value="{{ r.id }}"><input type="hidden" name="decision" value="approve"><button>Approve</button></form>
+<form method="post" class="inline"><input type="hidden" name="submission_id" value="{{ r.id }}"><input type="hidden" name="decision" value="reject"><input name="reason" placeholder="Reason"><button>Reject</button></form>
+{% endif %}
+</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

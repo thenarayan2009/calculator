@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Task Management</h2>
+<form method="post">
+<input type="hidden" name="action" value="add">
+<input name="name" placeholder="Task name" required>
+<input type="number" step="0.01" name="reward" placeholder="Reward" required>
+<textarea name="instructions" placeholder="Instructions" required></textarea>
+<button class="btn">Add Task</button>
+</form>
+<table><tr><th>ID</th><th>Name</th><th>Reward</th><th>Status</th><th>Actions</th></tr>
+{% for t in tasks %}
+<tr><td>{{ t.id }}</td><td>{{ t.name }}</td><td>{{ t.reward }}</td><td>{{ 'Active' if t.is_active else 'Inactive' }}</td><td>
+<form method="post" class="inline"><input type="hidden" name="action" value="toggle"><input type="hidden" name="task_id" value="{{ t.id }}"><button>Toggle</button></form>
+<form method="post" class="inline"><input type="hidden" name="action" value="delete"><input type="hidden" name="task_id" value="{{ t.id }}"><button>Delete</button></form>
+</td></tr>
+{% endfor %}</table></div>
+{% endblock %}

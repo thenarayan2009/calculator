@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Withdrawal</h2>
+<p>Balance: ₹{{ '%.2f'|format(balance) }} | Minimum: ₹{{ '%.0f'|format(min_withdraw) }}</p>
+<form method="post">
+<input type="number" step="0.01" name="amount" placeholder="Amount" required>
+<input name="upi_id" placeholder="UPI ID" required>
+<button class="btn">Request Withdrawal</button>
+</form>
+<h3>History</h3>
+<table><tr><th>Amount</th><th>Date</th><th>Status</th><th>Proof</th></tr>
+{% for r in rows %}
+<tr><td>₹{{ r.amount }}</td><td>{{ r.requested_at }}</td><td>{{ r.status }}</td><td>{% if r.payment_proof_path %}<a href="{{ url_for('uploads', filename=r.payment_proof_path) }}">Proof</a>{% else %}-{% endif %}</td></tr>
+{% endfor %}
+</table></div>
+{% endblock %}

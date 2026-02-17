@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Active Tasks</h2>
+{% for t in tasks %}
+<div class="task">
+<h3>{{ t.name }} (₹{{ t.reward }})</h3>
+<p>{{ t.instructions }}</p>
+{% if user_subs.get(t.id) %}
+<p>Status: <b>{{ user_subs[t.id].status }}</b></p>
+{% else %}
+<form method="post" enctype="multipart/form-data">
+<input type="hidden" name="task_id" value="{{ t.id }}">
+<input type="file" name="screenshot" accept="image/*" required>
+<button class="btn">Submit Screenshot</button>
+</form>
+{% endif %}
+</div>
+{% else %}<p>No active tasks.</p>{% endfor %}
+</div>
+{% endblock %}

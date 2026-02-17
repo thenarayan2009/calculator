@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+<h2>User Dashboard</h2>
+<p>Status: <b>{{ 'Blocked' if user.is_blocked else 'Active' }}</b></p>
+<div class="grid3">
+<div>Wallet: ₹{{ '%.2f'|format(balance) }}</div>
+<div>Total Earnings: ₹{{ '%.2f'|format(total_earnings) }}</div>
+<div>Total Withdrawn: ₹{{ '%.2f'|format(total_withdrawn) }}</div>
+</div>
+<p><a href="{{ url_for('tasks_page') }}">Tasks</a> | <a href="{{ url_for('task_history') }}">Task History</a> | <a href="{{ url_for('wallet_history') }}">Wallet</a> | <a href="{{ url_for('withdrawal_page') }}">Withdrawal</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+</div>
+{% endblock %}

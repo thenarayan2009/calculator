@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Future-Ready Task & Earn Platform</h2>
+  <p>Complete tasks, submit screenshots, get manually approved rewards, and request withdrawals safely.</p>
+  <ol>
+    <li>Register account</li><li>Complete active tasks</li><li>Upload screenshot proof</li><li>Wait for admin verification</li><li>Withdraw after minimum limit</li>
+  </ol>
+  <a class="btn" href="{{ url_for('register') }}">Register</a>
+  <a class="btn" href="{{ url_for('login') }}">Login</a>
+</section>
+{% endblock %}
