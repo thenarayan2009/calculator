@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Wallet History</h2><p>Current Balance ₹{{ '%.2f'|format(balance) }}</p>
+<table><tr><th>Date</th><th>Type</th><th>Amount</th><th>Description</th></tr>
+{% for r in rows %}<tr><td>{{ r.created_at }}</td><td>{{ r.txn_type }}</td><td>{{ r.amount }}</td><td>{{ r.description }}</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

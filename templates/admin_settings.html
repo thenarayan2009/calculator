@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Settings & Future Features</h2>
+<form method="post">
+<label>Minimum Withdrawal</label>
+<input name="minimum_withdrawal" type="number" step="0.01" value="{{ min_withdraw }}" required>
+<h3>Feature Flags</h3>
+{% for f in flags %}
+<label><input type="checkbox" name="flag_{{ f.key }}" {% if f.enabled %}checked{% endif %}> {{ f.key }}</label><br>
+{% endfor %}
+<button class="btn">Save Settings</button>
+</form></div>
+{% endblock %}

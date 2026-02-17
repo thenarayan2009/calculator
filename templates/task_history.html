@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Task History</h2>
+<table><tr><th>Task</th><th>Date</th><th>Proof</th><th>Status</th><th>Reward</th></tr>
+{% for r in rows %}
+<tr><td>{{ r.task_name }}</td><td>{{ r.submitted_at }}</td><td><a href="{{ url_for('uploads', filename=r.screenshot_path) }}" target="_blank">View</a></td><td>{{ r.status }}</td><td>{% if r.status=='Approved' %}Credited{% else %}No{% endif %}</td></tr>
+{% endfor %}
+</table></div>
+{% endblock %}

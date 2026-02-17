@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>User Control</h2>
+<table><tr><th>Name</th><th>Contact</th><th>Status</th><th>Action</th></tr>
+{% for u in rows %}<tr><td>{{ u.name }}</td><td>{{ u.contact }}</td><td>{{ 'Blocked' if u.is_blocked else 'Active' }}</td><td>
+<form method="post"><input type="hidden" name="user_id" value="{{ u.id }}"><button>{{ 'Unblock' if u.is_blocked else 'Block' }}</button></form>
+</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

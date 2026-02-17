@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Admin Login</h2>
+<p>Default credentials: {{ username_hint }} / {{ password_hint }}</p>
+<form method="post">
+<input name="username" required>
+<input type="password" name="password" required>
+<button class="btn">Admin Login</button>
+</form></div>
+{% endblock %}

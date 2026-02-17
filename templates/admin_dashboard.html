@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><h2>Admin Dashboard</h2>
+<div class="grid3">
+<div>Total users: {{ stats.total_users }}</div>
+<div>Total earnings: ₹{{ stats.total_earnings }}</div>
+<div>Total withdrawals: ₹{{ stats.total_withdrawals }}</div>
+<div>Pending tasks: {{ stats.pending_tasks }}</div>
+<div>Pending withdrawals: {{ stats.pending_withdrawals }}</div>
+</div>
+<p><a href="{{ url_for('admin_tasks') }}">Manage Tasks</a> | <a href="{{ url_for('admin_submissions') }}">Verify Screenshots</a> | <a href="{{ url_for('admin_withdrawals') }}">Withdrawals</a> | <a href="{{ url_for('admin_users') }}">Users</a> | <a href="{{ url_for('admin_settings') }}">Settings</a> | <a href="{{ url_for('admin_logout') }}">Logout</a></p>
+</div>
+{% endblock %}
